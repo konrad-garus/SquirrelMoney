@@ -1,113 +1,211 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>pl.squirrel</groupId>
-  <artifactId>money</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <dependencies>
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-webmvc</artifactId>
-  		<version>3.1.0.RELEASE</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>cglib</groupId>
-  		<artifactId>cglib</artifactId>
-  		<version>2.2.2</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.velocity</groupId>
-  		<artifactId>velocity</artifactId>
-  		<version>1.7</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.velocity</groupId>
-  		<artifactId>velocity-tools</artifactId>
-  		<version>2.0</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.tiles</groupId>
-  		<artifactId>tiles-core</artifactId>
-  		<version>2.2.2</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.tiles</groupId>
-  		<artifactId>tiles-velocity</artifactId>
-  		<version>2.2.2</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.slf4j</groupId>
-  		<artifactId>slf4j-api</artifactId>
-  		<version>1.6.4</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.slf4j</groupId>
-  		<artifactId>slf4j-log4j12</artifactId>
-  		<version>1.6.4</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>log4j</groupId>
-  		<artifactId>log4j</artifactId>
-  		<version>1.2.15</version>
-  		<exclusions>
-  			<exclusion>
-  				<artifactId>jmxtools</artifactId>
-  				<groupId>com.sun.jdmk</groupId>
-  			</exclusion>
-  			<exclusion>
-  				<artifactId>jmxri</artifactId>
-  				<groupId>com.sun.jmx</groupId>
-  			</exclusion>
-  			<exclusion>
-  				<artifactId>jms</artifactId>
-  				<groupId>javax.jms</groupId>
-  			</exclusion>
-  		</exclusions>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.slf4j</groupId>
-  		<artifactId>jcl-over-slf4j</artifactId>
-  		<version>1.6.4</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.tiles</groupId>
-  		<artifactId>tiles-jsp</artifactId>
-  		<version>2.2.2</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>net.sf.opencsv</groupId>
-  		<artifactId>opencsv</artifactId>
-  		<version>2.3</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-tx</artifactId>
-  		<version>3.1.0.RELEASE</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-orm</artifactId>
-  		<version>3.1.0.RELEASE</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.hibernate.javax.persistence</groupId>
-  		<artifactId>hibernate-jpa-2.0-api</artifactId>
-  		<version>1.0.1.Final</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.hibernate</groupId>
-  		<artifactId>hibernate-entitymanager</artifactId>
-  		<version>4.1.0.Final</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>joda-time</groupId>
-  		<artifactId>joda-time</artifactId>
-  		<version>2.1</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.jadira.usertype</groupId>
-  		<artifactId>usertype.core</artifactId>
-  		<version>3.0.0.CR1</version>
-  	</dependency>
-  </dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pl.squirrel</groupId>
+	<artifactId>money</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-tools</artifactId>
+			<version>2.0</version>
+			<classifier>src</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-velocity</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>jmxtools</artifactId>
+					<groupId>com.sun.jdmk</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jmxri</artifactId>
+					<groupId>com.sun.jmx</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jms</artifactId>
+					<groupId>javax.jms</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jadira.usertype</groupId>
+			<artifactId>usertype.core</artifactId>
+			<version>3.0.0.CR1</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.2</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- <plugin> -->
+			<!-- <groupId>org.codehaus.mojo</groupId> -->
+			<!-- <artifactId>jboss-maven-plugin</artifactId> -->
+			<!-- <configuration> -->
+			<!-- <jbossHome>/prg/jboss-as-7.0.2.Final</jbossHome> -->
+			<!-- </configuration> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>jboss-deploy</id> -->
+			<!-- <phase>pre-integration-test</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>hard-deploy</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <fileName>${basedir}/target/money-0.0.1-SNAPSHOT.war</fileName> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- <execution> -->
+			<!-- <id>jboss-undeploy</id> -->
+			<!-- <phase>post-integration-test</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>undeploy</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <fileName>${basedir}/target/money-0.0.1-SNAPSHOT.war</fileName> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<executions>
+					<!-- <execution> -->
+					<!-- <phase>package</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>deploy</goal> -->
+					<!-- </goals> -->
+					<!-- </execution> -->
+
+					<execution>
+						<id>jboss-deploy</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>redeploy</goal>
+						</goals>
+						<configuration>
+						
+<!-- 							<fileName>${basedir}/target/money-0.0.1-SNAPSHOT.war</fileName> -->
+						</configuration>
+					</execution>
+<!-- 					<execution> -->
+<!-- 						<id>jboss-undeploy</id> -->
+<!-- 						<phase>post-integration-test</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>undeploy</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<fileName>${basedir}/target/money-0.0.1-SNAPSHOT.war</fileName> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>failsafe-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
