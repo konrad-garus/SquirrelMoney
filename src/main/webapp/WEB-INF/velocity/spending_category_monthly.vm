@@ -1,0 +1,23 @@
+#tiles_insertTemplate({"template":"template.vm"})
+  #tiles_putAttribute({"name":"title", "value": "Sumy wydatków"})#end
+  #tiles_putAttribute({"name":"body"})
+	<table class="table-bordered table-striped ">
+		<thead>
+			<tr>
+				<th>&nbsp;</th>
+				#foreach($s in ${spendings.columnHeaders})
+					<th>$!s</th>
+				#end
+			</tr>
+		</thead>
+		#foreach($s in ${spendings.rowHeaders})
+			<tr>
+				<th>$s</th>
+				#foreach($c in ${spendings.columnHeaders})
+				<td>$!{spendings.getValueAt($s, $c)}</td>
+				#end
+			</tr>
+		#end
+	</table>
+  #end
+#end

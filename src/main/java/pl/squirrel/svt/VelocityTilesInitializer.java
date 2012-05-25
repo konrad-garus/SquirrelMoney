@@ -1,5 +1,7 @@
 package pl.squirrel.svt;
 
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tiles.TilesApplicationContext;
@@ -26,6 +28,12 @@ public class VelocityTilesInitializer extends DefaultTilesInitializer {
 	protected AbstractTilesContainerFactory createContainerFactory(
 			TilesApplicationContext context) {
 		return new BasicTilesContainerFactory() {
+			@Override
+			protected List<URL> getSourceURLs(
+					TilesApplicationContext applicationContext,
+					TilesRequestContextFactory contextFactory) {
+				return new ArrayList<URL>();
+			}
 
 			@Override
 			protected List<TilesRequestContextFactory> getTilesRequestContextFactoriesToBeChained(

@@ -1,0 +1,11 @@
+#tiles_insertTemplate({"template":"template.vm"})
+	#tiles_putAttribute({"name":"title", "value": "Import wydatków"})#end
+	#tiles_putAttribute({"name":"body"})
+		<h1>Please upload a file</h1>
+		<form method="post" action="spending_import.html" enctype="multipart/form-data">
+			<input type="file" name="file"/>
+			<input type="submit"/>
+		</form>
+		${context}
+	#end
+#end

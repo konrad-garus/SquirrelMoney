@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.squirrel.money.api.SpendingTotal;
 import pl.squirrel.money.entity.Spending;
 
 @Repository
@@ -17,6 +18,24 @@ public class SpendingDao {
 	EntityManager entityManager;
 
 	public List<Spending> getAllSpendings() {
-		return entityManager.createQuery("from Spending").getResultList();
+		return entityManager.createQuery("from Spending", Spending.class)
+				.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<SpendingTotal> getTotalsByCategory() {
+		return entityManager
+				.createQuery(
+						"select new pl.squirrel.money.api.SpendingTotal("
+								+ "category, to_char(spendingDate, 'YYYY-MM'), sum(totalPrice)) "
+								+ "from Spending "
+								+ "where spendingDate is not null "
+								+ "group by category, to_char(spendingDate, 'YYYY-MM') "
+								+ "order by to_char(spendingDate, 'YYYY-MM'), category")
+				.getResultList();
+	}
+
+	public void persist(Spending s) {
+		entityManager.persist(s);
 	}
 }

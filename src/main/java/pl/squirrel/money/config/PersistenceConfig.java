@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jndi.JndiTemplate;
 import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -18,7 +17,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class PersistenceConfig {
 	@Bean
 	public DataSource dataSource() throws NamingException {
+		// JBoss
 		return new JndiTemplate().lookup("jdbc/money", DataSource.class);
+		// return new JndiTemplate().lookup("java:/comp/env/jdbc/money",
+		// DataSource.class); // Tomcat
 	}
 
 	@Bean
@@ -29,7 +31,8 @@ public class PersistenceConfig {
 		factoryBean
 				.setPackagesToScan(new String[] { "pl.squirrel.money.entity" });
 
-		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		// vendorAdapter.setGenerateDdl(false); // TODO test only!
 		// {
 		// // JPA properties ...
 		// }

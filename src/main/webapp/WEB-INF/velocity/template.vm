@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>#tiles_insertAttribute({"name":"title"})#end</title>
@@ -7,12 +7,22 @@
 	<body>
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div class="span2">
-					Span2
+				<div class="span1">
+					<ul class="nav nav-pills nav-stacked">
+						#if( $request.contextPath + "/spending_list.html" == $request.requestURI )
+							<li class="active"><a href="#springUrl("/spending_list.html")">Lista</a></li>
+						#else
+							<li><a href="#springUrl("/spending_list.html")">Lista</a></li>
+						#end
+						#if( $request.contextPath + "/spending_import.html" == $request.requestURI )
+							<li class="active"><a href="#springUrl("/spending_import.html")">Import</a></li>
+						#else
+							<li><a href="#springUrl("/spending_import.html")">Import</a></li>
+						#end
+					
 				</div>
-				<div class="span10">
-					#tiles_insertAttribute({"name":"body"})#end
-					<p>Spring macros work in tiles template, too: #springUrl("/myUrl")</p>			
+				<div class="span11">
+					#tiles_insertAttribute({"name":"body"})#end		
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tools>
+	<toolbox scope="request">
+		<tool key="context" class="org.apache.velocity.tools.view.ViewContextTool" />
+	</toolbox>
+</tools>
