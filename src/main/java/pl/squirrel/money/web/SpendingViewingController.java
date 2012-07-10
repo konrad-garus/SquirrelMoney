@@ -13,7 +13,7 @@ import pl.squirrel.money.api.TableData;
 import pl.squirrel.money.data.SpendingDao;
 
 @Controller
-public class SpendingController {
+public class SpendingViewingController {
 	@Autowired
 	private SpendingDao spendingDao;
 
@@ -23,13 +23,8 @@ public class SpendingController {
 		return "spending_list";
 	}
 
-	@RequestMapping("/spending_list_2.html")
-	public String renderSpendingList2(ModelMap model) {
-		return "spending_list_2";
-	}
-
 	@RequestMapping("/spending_category_monthly.html")
-	public String mav(ModelMap model) {
+	public String renderMonthlyTotals(ModelMap model) {
 		model.addAttribute("spendings",
 				mapTotals(spendingDao.getTotalsByCategory()));
 		return "spending_category_monthly";

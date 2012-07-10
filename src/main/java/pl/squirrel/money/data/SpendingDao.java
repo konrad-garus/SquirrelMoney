@@ -17,9 +17,15 @@ public class SpendingDao {
 	@PersistenceContext
 	EntityManager entityManager;
 
+	public Object getLastSpendings(int i) {
+		return entityManager
+				.createQuery("from Spending order by id desc", Spending.class)
+				.setMaxResults(i).getResultList();
+	}
+
 	public List<Spending> getAllSpendings() {
-		return entityManager.createQuery("from Spending", Spending.class)
-				.getResultList();
+		return entityManager.createQuery("from Spending order by id",
+				Spending.class).getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -38,4 +44,5 @@ public class SpendingDao {
 	public void persist(Spending s) {
 		entityManager.persist(s);
 	}
+
 }

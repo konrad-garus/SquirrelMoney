@@ -43,6 +43,7 @@ public class VelocityTilesInitializer extends DefaultTilesInitializer {
 				registerRequestContextFactory(
 						VelocityTilesRequestContextFactory.class.getName(),
 						factories, parent);
+				int TODO;//TODO
 				return factories;
 			}
 

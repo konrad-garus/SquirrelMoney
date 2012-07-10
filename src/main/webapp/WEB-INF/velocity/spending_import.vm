@@ -1,11 +1,21 @@
 #tiles_insertTemplate({"template":"template.vm"})
 	#tiles_putAttribute({"name":"title", "value": "Import wydatków"})#end
+	#tiles_putAttribute({"name": "navigation"})
+		<ul class="nav nav-list">
+			<li><a href="#springUrl("/spending_insert.html")">Dodawanie wydatków</a></li>
+			<li><a href="#springUrl("/spending_list.html")">Lista</a></li>
+			<li><a href="#springUrl("/spending_category_monthly.html")">Sumy miesięczne</a></li>
+			<li class="nav-header">Import</li>
+			<li class="active"><a href="#springUrl("/spending_import.html")">Import</a></li>
+			<li class="nav-header">Ustawienia</li>
+			<li><a href="#springUrl("/spending_groups.html")">Grupy</a></li>
+		</ul>
+	#end
 	#tiles_putAttribute({"name":"body"})
-		<h1>Please upload a file</h1>
+		<h1>Wybierz plik</h1>
 		<form method="post" action="spending_import.html" enctype="multipart/form-data">
 			<input type="file" name="file"/>
-			<input type="submit"/>
+			<input type="submit" value="Wyślij"/>
 		</form>
-		${context}
 	#end
 #end

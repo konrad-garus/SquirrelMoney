@@ -1,0 +1,39 @@
+#tiles_insertTemplate({"template":"template.vm"})
+  #tiles_putAttribute({"name":"title", "value": "Dodawanie"})#end
+  #tiles_putAttribute({"name": "navigation"})
+		<ul class="nav nav-list">
+			<li class="active"><a href="#springUrl("/spending_insert.html")">Dodawanie wydatków</a></li>
+			<li><a href="#springUrl("/spending_list.html")">Lista</a></li>
+			<li><a href="#springUrl("/spending_category_monthly.html")">Sumy miesięczne</a></li>
+			<li class="nav-header">Import</li>
+			<li><a href="#springUrl("/spending_import.html")">Import</a></li>
+			<li class="nav-header">Ustawienia</li>
+			<li><a href="#springUrl("/spending_groups.html")">Grupy</a></li>
+		</ul>
+	#end
+  #tiles_putAttribute({"name":"body"})
+  <form action="" method="POST">
+		<fieldset>
+			<legend>Nowy wpis</legend>
+			
+			#springBind("command.spendingDate")
+			<label for="spendingDate">Data:</label>
+			<input type="text" name="${status.expression}" /> 
+		
+			<!--<input type="text" name="spendingDate" id="name" />-->
+		</fieldset>
+	</form>
+  
+	<fieldset>
+		<legend>Ostatnie 100 wpisów</legend>
+		<table class="table-bordered table-striped ">
+			<thead><tr><th>Id</th><th>Kategoria</th><th>Podkategoria</th><th>Co</th><th>Ile</th><th>Cena/szt</th><th>Cena</th><th>Data</th></tr></thead>
+			<tbody>
+			#foreach($s in $spendings)
+        		<tr><td>$!s.id</td><td>$!s.category</td><td>$!s.subcategory</td><td>$!s.name</td><td>$!s.quantity</td><td>$!s.unitPrice</td><td>$!s.totalPrice</td><td>$!s.spendingDate</td></tr>
+        	#end
+			</tbody>
+		</table>
+	</fieldset>
+  #end
+#end

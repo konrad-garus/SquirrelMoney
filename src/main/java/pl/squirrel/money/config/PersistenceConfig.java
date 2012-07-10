@@ -1,11 +1,13 @@
 package pl.squirrel.money.config;
 
+import java.util.Properties;
+
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jndi.JndiTemplate;
+import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -17,8 +19,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class PersistenceConfig {
 	@Bean
 	public DataSource dataSource() throws NamingException {
+		return new JndiDataSourceLookup().getDataSource("jdbc/money");
 		// JBoss
-		return new JndiTemplate().lookup("jdbc/money", DataSource.class);
+		// return new JndiTemplate().lookup("jdbc/money", DataSource.class);
 		// return new JndiTemplate().lookup("java:/comp/env/jdbc/money",
 		// DataSource.class); // Tomcat
 	}
@@ -38,7 +41,10 @@ public class PersistenceConfig {
 		// }
 		// };
 		factoryBean.setJpaVendorAdapter(vendorAdapter);
-		// factoryBean.setJpaProperties(additionlProperties());
+		Properties props = new Properties();
+		props.put("hibernate.dialect",
+				"org.hibernate.dialect.PostgreSQLDialect");
+		factoryBean.setJpaProperties(props);
 
 		return factoryBean;
 	}

@@ -34,7 +34,6 @@ public class SpendingImportController {
 			throws IOException {
 		log.debug("Import file size: " + file.getBytes().length + ", type: "
 				+ file.getContentType());
-		System.out.println("KG rrrr");
 		spendingImporter.importSpendings(file.getInputStream());
 		return "redirect:/spending_list.html";
 	}

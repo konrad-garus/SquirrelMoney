@@ -8,17 +8,7 @@
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span1">
-					<ul class="nav nav-pills nav-stacked">
-						#if( $request.contextPath + "/spending_list.html" == $request.requestURI )
-							<li class="active"><a href="#springUrl("/spending_list.html")">Lista</a></li>
-						#else
-							<li><a href="#springUrl("/spending_list.html")">Lista</a></li>
-						#end
-						#if( $request.contextPath + "/spending_import.html" == $request.requestURI )
-							<li class="active"><a href="#springUrl("/spending_import.html")">Import</a></li>
-						#else
-							<li><a href="#springUrl("/spending_import.html")">Import</a></li>
-						#end
+					#tiles_insertAttribute({"name": "navigation", "ignore": true})#end
 					
 				</div>
 				<div class="span11">
