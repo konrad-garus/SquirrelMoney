@@ -7,7 +7,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pl.squirrel.money.data.SpendingDao;
-import pl.squirrel.money.entity.Spending;
 
 @Controller
 public class SpendingEditionController {
@@ -20,7 +19,7 @@ public class SpendingEditionController {
 	@RequestMapping({ "/spending_insert"})
 	public String renderForm(ModelMap model) {
 		model.addAttribute("spendings", spendingDao.getLastSpendings(100));
-		model.addAttribute("command", new Spending());
+		model.addAttribute("command", new SpendingCommand());
 		return "spending_insert";
 	}
 }

@@ -12,15 +12,26 @@
 		</ul>
 	#end
   #tiles_putAttribute({"name":"body"})
-  <form action="" method="POST">
+  <form action="" method="POST" class="form-horizontal">
 		<fieldset>
 			<legend>Nowy wpis</legend>
 			
-			#springBind("command.spendingDate")
-			<label for="spendingDate">Data:</label>
-			<input type="text" name="${status.expression}" /> 
-		
-			<!--<input type="text" name="spendingDate" id="name" />-->
+			#macro( formLine $field $label )
+				<div class="control-group">
+					#springBind("command.$field")
+					<label for="$field" class="control-label">${label}:</label>
+					<div class="controls"><input type="text" name="${status.expression}" /></div>
+				</div>
+			#end
+			
+			#formLine( "category" "Kategoria" )
+			#formLine( "subcategory" "Podkategoria" )
+			#formLine( "name" "Przedmiot" )
+			#formLine( "totalPrice" "Cena (całość)" )
+			#formLine( "unitPrice" "Cena (za sztukę)" )
+			#formLine( "quantity" "Ilość" )
+			#formLine( "spendingDate" "Data" )
+
 		</fieldset>
 	</form>
   
