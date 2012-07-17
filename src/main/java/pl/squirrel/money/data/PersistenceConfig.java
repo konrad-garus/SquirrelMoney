@@ -1,4 +1,4 @@
-package pl.squirrel.money.config;
+package pl.squirrel.money.data;
 
 import java.util.Properties;
 
@@ -6,6 +6,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -16,10 +17,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
+@ComponentScan(basePackages="pl.squirrel.money.data")
 public class PersistenceConfig {
 	@Bean
 	public DataSource dataSource() throws NamingException {
 		return new JndiDataSourceLookup().getDataSource("jdbc/money");
+		// TODO
 		// JBoss
 		// return new JndiTemplate().lookup("jdbc/money", DataSource.class);
 		// return new JndiTemplate().lookup("java:/comp/env/jdbc/money",

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>#tiles_insertAttribute({"name":"title"})#end</title>
-		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="#springUrl("/css/bootstrap.css")" rel="stylesheet">
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -16,6 +16,6 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/bootstrap.js" type="javascript" />
+		<script src="#springUrl("/js/bootstrap.js")" type="javascript" />
 	</body>
 </html>

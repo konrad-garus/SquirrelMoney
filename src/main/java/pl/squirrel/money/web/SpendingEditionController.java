@@ -17,7 +17,7 @@ public class SpendingEditionController {
 	@Autowired
 	private SpendingDao spendingDao;
 
-	@RequestMapping("/spending_insert.html")
+	@RequestMapping({ "/spending_insert"})
 	public String renderForm(ModelMap model) {
 		model.addAttribute("spendings", spendingDao.getLastSpendings(100));
 		model.addAttribute("command", new Spending());

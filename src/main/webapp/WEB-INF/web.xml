@@ -15,14 +15,14 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				pl.squirrel.money.**
+				pl.squirrel.money.config.**
 			</param-value>
 		</init-param>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>*.html</url-pattern>
+		<url-pattern>/view/*</url-pattern>
 	</servlet-mapping>
 
 	<filter>
@@ -47,4 +47,8 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>*.html</url-pattern>
 	</filter-mapping>
+	
+	<welcome-file-list>
+    	<welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 </web-app>

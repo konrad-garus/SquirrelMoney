@@ -2,5 +2,6 @@
 <tools>
 	<toolbox scope="request">
 		<tool key="context" class="org.apache.velocity.tools.view.ViewContextTool" />
+		<tool key="link" class="org.apache.velocity.tools.view.LinkTool" />
 	</toolbox>
 </tools>

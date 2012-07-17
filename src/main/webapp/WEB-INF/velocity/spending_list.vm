@@ -2,13 +2,13 @@
 	#tiles_putAttribute({"name":"title", "value": "Lista wydatków"})#end
 	#tiles_putAttribute({"name": "navigation"})
 		<ul class="nav nav-list">
-			<li><a href="#springUrl("/spending_insert.html")">Dodawanie wydatków</a></li>
-			<li class="active"><a href="#springUrl("/spending_list.html")">Lista</a></li>
-			<li><a href="#springUrl("/spending_category_monthly.html")">Sumy miesięczne</a></li>
+			<li><a href="#springUrl("/view/spending_insert.html")">Dodawanie wydatków</a></li>
+			<li class="active"><a href="#springUrl("/view/spending_list.html")">Lista</a></li>
+			<li><a href="#springUrl("/view/spending_category_monthly.html")">Sumy miesięczne</a></li>
 			<li class="nav-header">Import</li>
-			<li><a href="#springUrl("/spending_import.html")">Import</a></li>
+			<li><a href="#springUrl("/view/spending_import.html")">Import</a></li>
 			<li class="nav-header">Ustawienia</li>
-			<li><a href="#springUrl("/spending_groups.html")">Grupy</a></li>
+			<li><a href="#springUrl("/view/spending_groups.html")">Grupy</a></li>
 		</ul>
 	#end
 	#tiles_putAttribute({"name":"body"})
