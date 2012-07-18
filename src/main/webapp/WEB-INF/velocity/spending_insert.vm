@@ -12,7 +12,7 @@
 		</ul>
 	#end
   #tiles_putAttribute({"name":"body"})
-  <form action="" method="POST" class="form-horizontal">
+  <form action="#springUrl("/view/spending_insert")" method="POST" class="form-horizontal">
 		<fieldset>
 			<legend>Nowy wpis</legend>
 			
@@ -20,7 +20,10 @@
 				<div class="control-group">
 					#springBind("command.$field")
 					<label for="$field" class="control-label">${label}:</label>
-					<div class="controls"><input type="text" name="${status.expression}" /></div>
+					<div class="controls">
+						<input type="text" name="${status.expression}" value="$!{status.value}" />
+					## #springFormInput("command.$field" 'id="myid" data-zaza="uu"')
+					</div>
 				</div>
 			#end
 			
@@ -32,6 +35,7 @@
 			#formLine( "quantity" "Ilość" )
 			#formLine( "spendingDate" "Data" )
 
+			<div class="controls"><button type="submit" class="btn">Dodaj</button></div>
 		</fieldset>
 	</form>
   
