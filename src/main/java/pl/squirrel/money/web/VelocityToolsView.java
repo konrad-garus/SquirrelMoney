@@ -1,7 +1,6 @@
 package pl.squirrel.money.web;
 
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,8 +27,7 @@ public class VelocityToolsView extends VelocityView {
 		}
 
 		if (model != null) {
-			for (Map.Entry<String, Object> entry : (Set<Map.Entry<String, Object>>) model
-					.entrySet()) {
+			for (Map.Entry<String, Object> entry : model.entrySet()) {
 				context.put(entry.getKey(), entry.getValue());
 			}
 		}

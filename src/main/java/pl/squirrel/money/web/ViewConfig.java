@@ -1,23 +1,22 @@
 package pl.squirrel.money.web;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
-import org.apache.velocity.tools.generic.ContextTool;
-import org.apache.velocity.tools.generic.LinkTool;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.ui.velocity.VelocityEngineFactory;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.tiles2.TilesConfigurer;
 import org.springframework.web.servlet.view.velocity.VelocityConfig;
 import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
@@ -26,7 +25,8 @@ import org.springframework.web.servlet.view.velocity.VelocityViewResolver;
 import pl.squirrel.svt.VelocityTilesInitializer;
 
 @Configuration
-@ComponentScan(basePackages="pl.squirrel.money.web")
+@ComponentScan(basePackages = "pl.squirrel.money.web")
+@EnableWebMvc
 public class ViewConfig implements ApplicationContextAware {
 	private ApplicationContext context;
 
@@ -50,9 +50,10 @@ public class ViewConfig implements ApplicationContextAware {
 		cfg.setTilesInitializer(new VelocityTilesInitializer(velocityConfig()));
 		return cfg;
 	}
-	
+
 	@Bean
-	public VelocityEngine velocityEngine() throws VelocityException, IOException {
+	public VelocityEngine velocityEngine() throws VelocityException,
+			IOException {
 		return new VelocityEngineFactory().createVelocityEngine();
 	}
 
@@ -69,6 +70,13 @@ public class ViewConfig implements ApplicationContextAware {
 	@Bean
 	public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver result = new CommonsMultipartResolver();
+		return result;
+	}
+
+	@Bean
+	public MessageSource messageSource() {
+		ResourceBundleMessageSource result = new ResourceBundleMessageSource();
+		result.setBasename("messages");
 		return result;
 	}
 }

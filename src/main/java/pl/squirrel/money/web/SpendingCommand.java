@@ -2,8 +2,6 @@ package pl.squirrel.money.web;
 
 import java.math.BigDecimal;
 
-import org.joda.time.LocalDate;
-
 public class SpendingCommand {
 	private String category;
 
@@ -11,10 +9,10 @@ public class SpendingCommand {
 
 	private String name;
 
-	private LocalDate spendingDate;
+	private String spendingDate;
 
-	private BigDecimal totalPrice;
-	
+	private String totalPrice;
+
 	private Integer quantity;
 
 	private BigDecimal unitPrice;
@@ -43,19 +41,11 @@ public class SpendingCommand {
 		this.name = name;
 	}
 
-	public LocalDate getSpendingDate() {
-		return spendingDate;
-	}
-
-	public void setSpendingDate(LocalDate spendingDate) {
-		this.spendingDate = spendingDate;
-	}
-
-	public BigDecimal getTotalPrice() {
+	public String getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(BigDecimal totalPrice) {
+	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
@@ -74,6 +64,13 @@ public class SpendingCommand {
 	public void setUnitPrice(BigDecimal unitPrice) {
 		this.unitPrice = unitPrice;
 	}
-	
-	
+
+	public String getSpendingDate() {
+		return spendingDate;
+	}
+
+	public void setSpendingDate(String spendingDate) {
+		this.spendingDate = spendingDate;
+	}
+
 }
