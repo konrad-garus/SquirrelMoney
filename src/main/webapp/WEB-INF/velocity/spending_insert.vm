@@ -12,7 +12,7 @@
 		</ul>
 	#end
   #tiles_putAttribute({"name":"body"})
-  <form action="#springUrl("/view/spending_insert")" method="POST" class="form-horizontal">
+	<form action="#springUrl("/view/spending_insert")" method="POST" class="form-horizontal">
 		<fieldset>
 			<legend>Nowy wpis</legend>
 			#macro( formLine $field $label )
@@ -20,7 +20,7 @@
 					#springBind("command.$field")
 					<label for="$field" class="control-label">${label}:</label>
 					<div class="controls">
-						<input type="text" name="${status.expression}" value="$!{status.value}" />
+						<input type="text" name="${status.expression}" value="$!{status.value}" id="input${status.expression}" />
 						$!{status.errorMessage}
 					</div>
 				</div>
@@ -37,6 +37,39 @@
 			<div class="controls"><button type="submit" class="btn">Dodaj</button></div>
 		</fieldset>
 	</form>
+	
+	<script>
+		$(function() {
+    		$('#inputcategory').focus().select();
+			var availableTags = [
+			"ActionScript",
+			"AppleScript",
+			"Asp",
+			"BASIC",
+			"C",
+			"C++",
+			"Clojure",
+			"COBOL",
+			"ColdFusion",
+			"Erlang",
+			"Fortran",
+			"Groovy",
+			"Haskell",
+			"Java",
+			"JavaScript",
+			"Lisp",
+			"Perl",
+			"PHP",
+			"Python",
+			"Ruby",
+			"Scala",
+			"Scheme"
+		];
+			$( "#inputname" ).autocomplete({
+				source: "#springUrl('/view/spending_insert')"
+			});
+		});
+	</script>
   
 	<fieldset>
 		<legend>Ostatnie 100 wpisów</legend>

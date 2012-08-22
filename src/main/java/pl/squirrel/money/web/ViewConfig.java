@@ -30,6 +30,7 @@ import pl.squirrel.svt.VelocityTilesInitializer;
 public class ViewConfig implements ApplicationContextAware {
 	private ApplicationContext context;
 
+	@Override
 	public void setApplicationContext(ApplicationContext context)
 			throws BeansException {
 		this.context = context;
@@ -79,4 +80,5 @@ public class ViewConfig implements ApplicationContextAware {
 		result.setBasename("messages");
 		return result;
 	}
+
 }

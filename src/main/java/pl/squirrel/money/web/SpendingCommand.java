@@ -2,6 +2,10 @@ package pl.squirrel.money.web;
 
 import java.math.BigDecimal;
 
+import org.joda.time.LocalDate;
+
+import pl.squirrel.money.entity.Spending;
+
 public class SpendingCommand {
 	private String category;
 
@@ -11,7 +15,9 @@ public class SpendingCommand {
 
 	private String spendingDate;
 
-	private String totalPrice;
+	private LocalDate spendingDateConverted;
+
+	private BigDecimal totalPrice;
 
 	private Integer quantity;
 
@@ -41,11 +47,11 @@ public class SpendingCommand {
 		this.name = name;
 	}
 
-	public String getTotalPrice() {
+	public BigDecimal getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(String totalPrice) {
+	public void setTotalPrice(BigDecimal totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
@@ -71,6 +77,37 @@ public class SpendingCommand {
 
 	public void setSpendingDate(String spendingDate) {
 		this.spendingDate = spendingDate;
+	}
+
+	public LocalDate getConvertedSpendingDate() {
+		return spendingDateConverted;
+	}
+
+	public void setSpendingDateConverted(LocalDate spendingDateConverted) {
+		this.spendingDateConverted = spendingDateConverted;
+	}
+
+	public Spending toSpending() {
+		Spending result = new Spending();
+		result.setCategory(getCategory());
+		result.setSubcategory(getSubcategory());
+		result.setName(getName());
+		result.setSpendingDate(spendingDateConverted);
+		result.setUnitPrice(getUnitPrice());
+		if (getUnitPrice() != null
+				&& (getQuantity() == null || getQuantity() == 0)) {
+			result.setQuantity(1);
+		} else {
+			result.setQuantity(getQuantity());
+		}
+		if (getTotalPrice() == null && getUnitPrice() != null) {
+			BigDecimal quantity = new BigDecimal(result.getQuantity());
+			BigDecimal multiplied = getUnitPrice().multiply(quantity);
+			result.setTotalPrice(multiplied);
+		} else {
+			result.setTotalPrice(getTotalPrice());
+		}
+		return result;
 	}
 
 }

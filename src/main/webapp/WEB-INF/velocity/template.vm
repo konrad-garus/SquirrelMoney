@@ -2,7 +2,11 @@
 <html>
 	<head>
 		<title>#tiles_insertAttribute({"name":"title"})#end</title>
-		<link href="#springUrl("/css/bootstrap.css")" rel="stylesheet">
+		<link href="#springUrl('/css/bootstrap.css')" rel="stylesheet" />
+		<link href="#springUrl('/css/cupertino/jquery-ui-1.8.23.custom.css')" rel ="stylesheet" />
+		<script src="#springUrl('/js/jquery-1.8.0.js')" ></script>
+		<script src="#springUrl('/js/jquery-ui-1.8.23.custom.min.js')" ></script>
+		
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -16,6 +20,6 @@
 				</div>
 			</div>
 		</div>
-		<script src="#springUrl("/js/bootstrap.js")" type="javascript" />
+        <script src="#springUrl('/js/bootstrap.js')" ></script>
 	</body>
 </html>

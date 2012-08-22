@@ -1,0 +1,3 @@
+url=jdbc:postgresql:money_test
+user=konrad
+password=password
