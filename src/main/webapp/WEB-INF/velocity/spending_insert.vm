@@ -38,37 +38,7 @@
 		</fieldset>
 	</form>
 	
-	<script>
-		$(function() {
-    		$('#inputcategory').focus().select();
-			var availableTags = [
-			"ActionScript",
-			"AppleScript",
-			"Asp",
-			"BASIC",
-			"C",
-			"C++",
-			"Clojure",
-			"COBOL",
-			"ColdFusion",
-			"Erlang",
-			"Fortran",
-			"Groovy",
-			"Haskell",
-			"Java",
-			"JavaScript",
-			"Lisp",
-			"Perl",
-			"PHP",
-			"Python",
-			"Ruby",
-			"Scala",
-			"Scheme"
-		];
-			$( "#inputname" ).autocomplete({
-				source: "#springUrl('/view/spending_insert')"
-			});
-		});
+	<script src="#springUrl('/js/spending_insert.js')">
 	</script>
   
 	<fieldset>

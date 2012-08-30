@@ -12,10 +12,16 @@ import pl.squirrel.money.web.ViewConfig;
 
 @Configuration
 @Import({ PersistenceConfig.class, ViewConfig.class })
-//@ComponentScan(basePackages = "pl.squirrel.money")
+// @ComponentScan(basePackages = "pl.squirrel.money")
 public class AppConfig {
+
+	public AppConfig() {
+		System.out.println("Grr construct"); // TODO
+	}
+
 	@Bean
 	public Logger log() {
+		System.out.println("Grr"); // TODO
 		Logger result = LoggerFactory.getLogger("SquirrelMoney");
 		return result;
 	}

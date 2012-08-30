@@ -26,6 +26,12 @@
 			<artifactId>velocity-tools</artifactId>
 			<version>2.0</version>
 			<classifier>src</classifier>
+			<exclusions>
+				<exclusion>
+					<artifactId>antlr</artifactId>
+					<groupId>antlr</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -148,6 +154,11 @@
 			<artifactId>spring-test</artifactId>
 			<version>3.1.0.RELEASE</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.2</version>
 		</dependency>
 	</dependencies>
 
