@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,8 +57,28 @@ public class SpendingDao {
 	// KG test: category == null, category == empty string
 	public List<SpendingCategory> findSpendingSubcategoriesByCategoryAndNameParts(
 			String category, String subcategory) {
-		// TODO Auto-generated method stub
-		return null;
+		if (StringUtils.isBlank(category)) {
+			return entityManager
+					.createQuery(
+							"select distinct new pl.squirrel.money.api.SpendingCategory(category, subcategory) "
+									+ "from Spending "
+									+ "where lower(subcategory) like lower(:subcategory) "
+									+ "order by category, subcategory")
+					.setParameter("subcategory", "%" + subcategory + "%")
+					.getResultList();
+		} else {
+			return entityManager
+					.createQuery(
+							"select distinct new pl.squirrel.money.api.SpendingCategory(category, subcategory) "
+									+ "from Spending "
+									+ "where lower(subcategory) like lower(:subcategory) "
+									+ "and lower(category) like lower(:category) "
+									+ "order by category, subcategory")
+					.setParameter("subcategory", "%" + subcategory + "%")
+					.setParameter("category", "%" + category + "%")
+					.getResultList();
+
+		}
 	}
 
 	public void persist(Spending s) {

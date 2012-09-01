@@ -88,6 +88,52 @@ public class SpendingDaoTest extends
 		Assert.assertEquals(got, expect);
 	}
 
+	@Test
+	public void shouldReturnEmptyListWhenNoMatchingSubcategory() {
+		insertSpending("Food", "Dairy", "10");
+
+		Assert.assertEquals(spendingDao
+				.findSpendingSubcategoriesByCategoryAndNameParts(null, "Ga"),
+				Collections.emptyList());
+	}
+
+	@Test
+	public void shouldReturnSubcategoryForNullCategory() {
+		insertSpending("Car", "Gas", "10");
+
+		List<SpendingCategory> expect = Arrays.asList(new SpendingCategory(
+				"Car", "Gas"));
+
+		Assert.assertEquals(spendingDao
+				.findSpendingSubcategoriesByCategoryAndNameParts(null, "Ga"),
+				expect);
+	}
+
+	@Test
+	public void shouldReturnSubcategoryForEmptyCategory() {
+		insertSpending("Car", "Gas", "10");
+
+		List<SpendingCategory> expect = Arrays.asList(new SpendingCategory(
+				"Car", "Gas"));
+
+		Assert.assertEquals(spendingDao
+				.findSpendingSubcategoriesByCategoryAndNameParts("", "Ga"),
+				expect);
+	}
+
+	@Test
+	public void shouldReturnSubcategoryForMatchingCategory() {
+		insertSpending("Car", "Gas", "10");
+		insertSpending("House", "Gas", "10");
+
+		List<SpendingCategory> expect = Arrays.asList(new SpendingCategory(
+				"Car", "Gas"));
+
+		Assert.assertEquals(spendingDao
+				.findSpendingSubcategoriesByCategoryAndNameParts("C", "Ga"),
+				expect);
+	}
+
 	private void insertSpending(String category, String subcategory,
 			String price) {
 		Spending spending = new Spending();

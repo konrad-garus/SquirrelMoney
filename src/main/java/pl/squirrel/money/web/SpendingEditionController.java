@@ -80,10 +80,6 @@ public class SpendingEditionController {
 		String json = gson.toJson(categories);
 		response.getWriter().print(json);
 		response.getWriter().flush();
-		//
-		// response.getWriter().println(
-		// "[{\"value\": \"Jada jada\", \"label\": \"Label" + term
-		// + "\"}]");
 	}
 
 	private Set<String> getDistinctCategoryNames(
@@ -102,18 +98,14 @@ public class SpendingEditionController {
 			@RequestParam(required = false, value = "category") String category,
 			HttpServletResponse response) throws IOException {
 		log.debug("Autosuggest subcategory for " + category + " / " + term);
-		// List<SpendingCategory> categories = new ArrayList<SpendingCategory>(
-		// spendingDao.findSpendingSubcategoriesByCategoryAndNameParts(
-		// category, term));
-		// Collections.sort(categories);
-		//
-		// String json = gson.toJson(categories);
-		// response.getWriter().print(json);
-		// response.getWriter().flush();
+		List<SpendingCategory> categories = new ArrayList<SpendingCategory>(
+				spendingDao.findSpendingSubcategoriesByCategoryAndNameParts(
+						category, term));
+		Collections.sort(categories);
 
-		response.getWriter().println(
-				"[{\"value\": \"Jada jada\", \"label\": \"Label" + term
-						+ "\"}]");
+		String json = gson.toJson(categories);
+		response.getWriter().print(json);
+		response.getWriter().flush();
 	}
 
 	@RequestMapping(value = "/spending_insert", params = { "term",
